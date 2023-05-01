@@ -75,6 +75,7 @@ def calculate_earning(results):
 weighted_avg = calculate_earning(results)
 
 
+
 TQQQ_profits = np.array(profits)
 
 np.set_printoptions(sign=' ', 

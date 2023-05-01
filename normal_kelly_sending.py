@@ -11,6 +11,7 @@ recipient = 'alioth0105@gmail.com'
 smtp_server = 'smtp.gmail.com'
 port = 587
 
+
 # 讀最後一行
 file_path = 'D:\\normal_kelly.txt'
 with open(file_path, 'r') as f:

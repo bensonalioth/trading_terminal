@@ -87,6 +87,7 @@ np.set_printoptions(sign=' ',
 
 print(SQQQ_profits)
 
+
 with open('SQQQ_profits.txt','a') as file:
     np.savetxt(file, SQQQ_profits.reshape(1,-1), delimiter=',', fmt='%.2f')
     

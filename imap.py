@@ -7,6 +7,7 @@ mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login('a0916295361@gmail.com', 'your_app_password')
 
 
+
 mail.select("inbox")
 
 # 搜尋條件
