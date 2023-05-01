@@ -32,7 +32,7 @@ server.starttls()
 
 # 登錄到Gmail帳戶
 email = 'a0916295361@gmail.com'
-password = 'ldzazxxnxxvsxgvb'
+password = 'your_app_password'
 server.login(email, password)
 
 # 發送電子郵件
