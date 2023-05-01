@@ -2,7 +2,7 @@ import imaplib
 import email
 import os
 
-# 登入Gmail郵箱
+
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login('a0916295361@gmail.com', 'your_app_password')
 
@@ -15,7 +15,7 @@ search_criteria = 'UNSEEN OR SUBJECT "BOUGHT" SUBJECT "SOLD"'
 # 搜尋符合條件的郵件
 result, data = mail.search(None, search_criteria)
 
-# 解析郵件主題
+# 檢查郵件主題
 for num in data[0].split():
     typ, msg_data = mail.fetch(num, '(RFC822)')
     email_message = email.message_from_bytes(msg_data[0][1])
