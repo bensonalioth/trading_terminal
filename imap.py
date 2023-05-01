@@ -6,7 +6,7 @@ import os
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
 mail.login('a0916295361@gmail.com', 'your_app_password')
 
-# 選擇收件箱
+
 mail.select("inbox")
 
 # 搜尋條件
@@ -20,10 +20,9 @@ for num in data[0].split():
     typ, msg_data = mail.fetch(num, '(RFC822)')
     email_message = email.message_from_bytes(msg_data[0][1])
     subject = email_message['subject']
-    
-    # 檢查主題長度是否小於40
+ 
     if len(subject) < 43:
-        # 將主題存儲在本地文件系統中
+        
         with open(os.path.join(r'D:\trade_big_data', 'email_subjects.txt'), 'a') as f:
             f.write(subject + '\n')
         print(subject)

@@ -3,7 +3,7 @@ import os
 from email.mime.text import MIMEText
 import base64
 
-# 設置電子郵件發送者和接收者
+# 設置發送者和接收者
 sender = 'a091695361@gmail.com'
 recipient = 'alioth0105@gmail.com'
 
@@ -11,13 +11,13 @@ recipient = 'alioth0105@gmail.com'
 smtp_server = 'smtp.gmail.com'
 port = 587
 
-# 讀取最後一行
+# 讀最後一行
 file_path = 'D:\\normal_kelly.txt'
 with open(file_path, 'r') as f:
     lines = f.readlines()
     last_line = lines[-1]
 
-# 構建電子郵件訊息
+
 body = '一倍凱利：{}%。'.format(last_line.strip())
 message = MIMEText(body)
 message['to'] = recipient
@@ -35,12 +35,12 @@ email = 'a0916295361@gmail.com'
 password = 'your_app_password'
 server.login(email, password)
 
-# 發送電子郵件
+# 發送郵件
 try:
     server.sendmail(sender, recipient,message.as_string())
     print('Email sent successfully!')
 except Exception as e:
     print(f'Sending email failed due to {e}')
 
-# 關閉連接
+# 關閉
 server.quit()

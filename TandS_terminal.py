@@ -30,7 +30,7 @@ with open('D:\TandS_profits.txt', 'r') as file:
     total_negative = 0
     count_negative = 0
     for line in lines:
-        numbers = line.strip().split(',') # 假設每行以逗號分隔數字
+        numbers = line.strip().split(',') 
         for num in numbers:
             try:
                 num = float(num)
@@ -38,7 +38,7 @@ with open('D:\TandS_profits.txt', 'r') as file:
                     total_negative += num
                     count_negative += 1
             except ValueError:
-                pass # 忽略無法轉換為浮點數的內容
+                pass
     if count_negative > 0:
         avg_negative =  total_negative/ count_negative
         print(f"The average of loss : {avg_negative}")
@@ -57,7 +57,7 @@ with open('D:\TandS_profits.txt', 'r') as file:
     
 
 
-    # 開啟文件，以追加模式打開文件
+    
     with open('D:\\normal_kelly.txt', 'a') as f:
         f.write('%.2f\n' % normal_kelly)
 
