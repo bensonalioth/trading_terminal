@@ -4,6 +4,7 @@ avg_positive=0
 avg_negative=0
 
 
+
 with open('D:\TandS_profits.txt', 'r') as file:
     lines = file.readlines()
     total_positive = 0
