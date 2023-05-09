@@ -4,7 +4,7 @@ import os
 
 
 mail = imaplib.IMAP4_SSL('imap.gmail.com')
-mail.login('a0916295361@gmail.com', 'your_app_password')
+mail.login('a0916295361@gmail.com', 'ldzazxxnxxvsxgvb')
 
 
 
@@ -24,7 +24,7 @@ for num in data[0].split():
  
     if len(subject) < 43:
         
-        with open(os.path.join(r'D:\trade_big_data', 'email_subjects.txt'), 'a') as f:
+        with open(os.path.join(r'D:\\trading_terminal\\trade_big_data', 'email_subjects.txt'), 'a') as f:
             f.write(subject + '\n')
         print(subject)
 mail.logout()
@@ -38,8 +38,8 @@ def extract_TQQQ_subjects(input_file_path, output_file_path):
             if 'TQQQ' in line:
                 f_output.write(line)
                 
-input_file_path =r'D:\trade_big_data\email_subjects.txt'
-output_file_path =  r'D:\trade_big_data\TQQQ_subjects.txt'
+input_file_path =r'D:\trading_terminal\trade_big_data\email_subjects.txt'
+output_file_path =r'D:\trading_terminal\trade_big_data\TQQQ_subjects.txt'
 extract_TQQQ_subjects(input_file_path, output_file_path)
 
 def extract_SQQQ_subjects(input_file_path, output_file_path):
@@ -50,8 +50,9 @@ def extract_SQQQ_subjects(input_file_path, output_file_path):
             if 'SQQQ' in line:
                 f_output.write(line)
                 
-input_file_path =r'D:\trade_big_data\email_subjects.txt'
-output_file_path =  r'D:\trade_big_data\SQQQ_subjects.txt'
+input_file_path =r'D:\\trading_terminal\\trade_big_data\\email_subjects.txt'
+output_file_path =r'D:\\trading_terminal\\trade_big_data\\SQQQ_subjects.txt'
 extract_SQQQ_subjects(input_file_path, output_file_path)
+
 
 

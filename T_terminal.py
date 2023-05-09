@@ -8,33 +8,34 @@ avg_negative_thirty=0
 
 
 
-TandS_profit = np.loadtxt('D:\\trading_terminal\\trading_terminal\\TandS_real_profits_timeorder.txt')
-neg_TandS_profit = TandS_profit[TandS_profit < 0]  # 选择所有负数元素
-TandS_loss_median=np.median(neg_TandS_profit)
-TandS_loss_mean = np.mean(neg_TandS_profit)
+T_profit = np.loadtxt('D:\\trading_terminal\\trading_terminal\\TQQQ_real_profits.txt')
+neg_T_profit = T_profit[T_profit < 0]  # 选择所有负数元素
+T_loss_median=np.median(neg_T_profit)
+T_loss_mean = np.mean(neg_T_profit)
 
-TandS_maxloss=np.min(TandS_profit)
-TandS_maxearn=np.max(TandS_profit)
+T_maxloss=np.min(T_profit)
+T_maxearn=np.max(T_profit)
 
-with open('D:\\trading_terminal\\trading_terminal\\TandS_loss_median.txt', 'a') as f:
-    f.write('%.2f\n' % TandS_loss_median)
+with open('D:\\trading_terminal\\trading_terminal\\T_loss_median.txt', 'a') as f:
+    f.write('%.2f\n' % T_loss_median)
     
-with open('D:\\trading_terminal\\trading_terminal\\TandS_loss_mean.txt', 'a') as f:
-    f.write('%.2f\n' % TandS_loss_mean)
+with open('D:\\trading_terminal\\trading_terminal\\T_loss_mean.txt', 'a') as f:
+    f.write('%.2f\n' % T_loss_mean)
 
 
-with open('D:\\trading_terminal\\trading_terminal\\TandS_maxloss.txt', 'a') as f:
-    f.write('%.2f\n' % TandS_maxloss)
+with open('D:\\trading_terminal\\trading_terminal\\T_maxloss.txt', 'a') as f:
+    f.write('%.2f\n' % T_maxloss)
             
     
-with open('D:\\trading_terminal\\trading_terminal\\TandS_maxearn.txt', 'a') as f:
-    f.write('%.2f\n' % TandS_maxearn)
-    
+with open('D:\\trading_terminal\\trading_terminal\\T_maxearn.txt', 'a') as f:
+    f.write('%.2f\n' % T_maxearn)
 
 
 
 
-with open('D:\\trading_terminal\\trading_terminal\\TandS_real_profits_timeorder.txt','r') as file:
+
+
+with open('D:\\trading_terminal\\trading_terminal\\TQQQ_real_profits.txt','r') as file:
     lines = file.readlines()
     total_positive = 0
     count_positive = 0
@@ -77,29 +78,29 @@ with open('D:\\trading_terminal\\trading_terminal\\TandS_real_profits_timeorder.
         
         
         
-    TandS_win_rate=100*count_positive/(count_negative+count_positive)
-    TandS_betting_odds=abs((avg_positive*count_positive)/(avg_negative*count_negative))
-    TandS_normal_kelly=100*((0.01*TandS_win_rate*(TandS_betting_odds+1))-1)/TandS_betting_odds
+    T_win_rate=100*count_positive/(count_negative+count_positive)
+    T_betting_odds=abs((avg_positive*count_positive)/(avg_negative*count_negative))
+    T_normal_kelly=100*((0.01*T_win_rate*(T_betting_odds+1))-1)/T_betting_odds
         
-    print("betting_odds:",TandS_betting_odds)
-    print("win_rate:",TandS_win_rate,"%")
-    print("normal_kelly:",TandS_normal_kelly,"%")
+    print("tqqq_betting_odds:",T_betting_odds)
+    print("tqqq_win_rate:",T_win_rate,"%")
+    print("normal_kelly:",T_normal_kelly,"%")
     
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_normal_kelly.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_normal_kelly)
+    with open('D:\\trading_terminal\\trading_terminal\\T_normal_kelly.txt', 'a') as f:
+        f.write('%.2f\n' % T_normal_kelly)
 
 
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_win_rate.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_win_rate)
+    with open('D:\\trading_terminal\\trading_terminal\\T_win_rate.txt', 'a') as f:
+        f.write('%.2f\n' % T_win_rate)
             
     
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_betting_odds.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_betting_odds)
+    with open('D:\\trading_terminal\\trading_terminal\\T_betting_odds.txt', 'a') as f:
+        f.write('%.2f\n' % T_betting_odds)
         
         
         
         
-with open('D:\\trading_terminal\\trading_terminal\\TandS_real_profits_timeorder.txt','r') as file:
+with open('D:\\trading_terminal\\trading_terminal\\TQQQ_real_profits.txt','r') as file:
     lines = file.readlines()
     total_positive_thirty = 0
     count_positive_thirty = 0
@@ -139,35 +140,24 @@ with open('D:\\trading_terminal\\trading_terminal\\TandS_real_profits_timeorder.
         
 
     
-    TandS_win_rate_thirty=100*count_positive_thirty/(count_negative_thirty+count_positive_thirty)
-    TandS_betting_odds_thirty=abs((avg_positive_thirty*count_positive_thirty)/(avg_negative_thirty*count_negative_thirty))
-    TandS_normal_kelly_thirty=100*((0.01*TandS_win_rate_thirty*(TandS_betting_odds_thirty+1))-1)/TandS_betting_odds_thirty
+    T_win_rate_thirty=100*count_positive_thirty/(count_negative_thirty+count_positive_thirty)
+    T_betting_odds_thirty=abs((avg_positive_thirty*count_positive_thirty)/(avg_negative_thirty*count_negative_thirty))
+    T_normal_kelly_thirty=100*((0.01*T_win_rate_thirty*(T_betting_odds_thirty+1))-1)/T_betting_odds_thirty
     
-    print("betting_odds_thirty:",TandS_betting_odds_thirty)
-    print("win_rate_thirty:",TandS_win_rate_thirty,"%")
-    print("normal_kelly_thirty:",TandS_normal_kelly_thirty,"%")
+    print("betting_odds_thirty:",T_betting_odds_thirty)
+    print("win_rate_thirty:",T_win_rate_thirty,"%")
+    print("normal_kelly_thirty:",T_normal_kelly_thirty,"%")
     
     
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_normal_kelly_thirty.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_normal_kelly_thirty)
+    with open('D:\\trading_terminal\\trading_terminal\\T_normal_kelly_thirty.txt', 'a') as f:
+        f.write('%.2f\n' % T_normal_kelly_thirty)
 
 
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_win_rate_thirty.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_win_rate_thirty)
+    with open('D:\\trading_terminal\\trading_terminal\\T_win_rate_thirty.txt', 'a') as f:
+        f.write('%.2f\n' % T_win_rate_thirty)
             
     
-    with open('D:\\trading_terminal\\trading_terminal\\TandS_betting_odds_thirty.txt', 'a') as f:
-        f.write('%.2f\n' % TandS_betting_odds_thirty)
+    with open('D:\\trading_terminal\\trading_terminal\\T_betting_odds_thirty.txt', 'a') as f:
+        f.write('%.2f\n' % T_betting_odds_thirty)
     
     
-    
-    
-    
-
-    
-
-
-
-
-
-

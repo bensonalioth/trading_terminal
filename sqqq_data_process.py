@@ -1,7 +1,7 @@
 import re
 import numpy as np
 
-with open(r"D:\trade_big_data\SQQQ_subjects.txt", "r") as file:
+with open(r"D:\\trading_terminal\\trade_big_data\\SQQQ_subjects.txt", "r") as file:
     lines = file.readlines()
 
 
@@ -26,9 +26,9 @@ for result in results:
 
         
 def calculate_earning(results):
-    total_amount = 0
-    total_cost = 0.0
-    
+
+    pre_amount = 0
+    average_price=0
 
     for result in results:
         action = result[0]
@@ -36,34 +36,34 @@ def calculate_earning(results):
         price = float(result[3])
 
         if action == 'BOUGHT':
-            total_amount += amount
-            total_cost += amount * price
-            average_price = total_cost / total_amount
+            average_price = ((amount*price)+(pre_amount*average_price))/(pre_amount+amount)
+            pre_amount+=amount
         elif action == 'SOLD':
             
-            if amount > total_amount:
+            if amount > pre_amount:
                 raise ValueError('SOLD amount is greater than holdings')
 
             profit = amount * (price - average_price)
             profit_sqqq=round(profit,3)
             profits.append(profit_sqqq)
-            total_cost -= amount * average_price
-            total_amount -= amount
+            pre_amount -= amount
+            
         
         else:
             raise ValueError(f'Invalid action: {action}')
             
 
-        if total_amount == 0:
+        if pre_amount == 0:
+    
             average_price=0
             continue
             
-        print(f'Holdings: {total_amount}, Average Price: {average_price}')
+        print(f'Holdings: {pre_amount}, Average Price: {average_price}')
 
     
-    if total_amount > 0:
-        average_price = total_cost / total_amount
-        print(f'Unsold Holdings: {total_amount}, Average Price: {average_price}')
+    if pre_amount > 0:
+    
+        print(f'Unsold Holdings: {pre_amount}, Average Price: {average_price}')
 
     
     if profits:
@@ -88,15 +88,25 @@ np.set_printoptions(sign=' ',
 print(SQQQ_profits)
 
 
-with open('SQQQ_profits.txt','a') as file:
-    np.savetxt(file, SQQQ_profits.reshape(1,-1), delimiter=',', fmt='%.2f')
+with open('D:\\trading_terminal\\trading_terminal\\SQQQ_profits.txt','w') as file:
+    np.savetxt(file, SQQQ_profits.reshape(1,-1), delimiter='\n', fmt='%.2f')
     
     
-with open('TandS_profits.txt','a') as file:
-     np.savetxt(file, SQQQ_profits.reshape(1,-1), delimiter=',', fmt='%.2f')
 
+# 開啟A文件，讀取內容
+with open('D:\\trading_terminal\\trading_terminal\\SQQQ_pre_profits.txt', 'r') as file:
+    a_content = file.read()
 
+# 開啟B文件，讀取內容
+with open('D:\\trading_terminal\\trading_terminal\\SQQQ_profits.txt', 'r') as file:
+    b_content = file.read()
 
+# 將B文件的內容串接於A文件之後
+a_content += b_content
+
+# 開啟real文件，將串接後的內容寫入
+with open('D:\\trading_terminal\\trading_terminal\\SQQQ_real_profits.txt', 'w') as file:
+    file.write(a_content)
 
 
 
